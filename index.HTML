@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+
+    <title>weather forecast</title>
+
+</head>
+
+<body>
+    <!-- <h1>WEATHER APP</h1> -->
+
+    <div id="cont" class="CONT">
+        <!-- <img src="https://static.vecteezy.com/system/resources/previews/022/417/454/original/mobile-frame-without-background-free-png.png" -->
+        alt="">
+        <div class="overlay">
+            <img src="sunny-rainy-cloudy-day-weather-forecast-icon-illustration_47987-10695-removebg-preview.png"
+                alt="">
+
+            <h1>WEATHER</h1>
+            <h2>forecast</h2>
+            <button class="custom-button">Get Started</button>
+
+
+
+        </div>
+        <div class="overlap">
+
+
+            <div class="notch">
+                <div class="weather">
+                    <div class="image">
+                        <h3></h3>
+                        <h4></h4>
+                        <h5>hii</h5>
+                        <p></p>
+                        <button title="search" id="searchbtn" onclick="showData() , showname()"><i class="ri-search-line"></i></button>
+
+                        <h1 id="showme"></h1>
+                        <h1 id="showmename"></h1>
+                        <img src="sunny-rainy-cloudy-day-weather-forecast-icon-illustration_47987-10695-removebg-preview.png"
+                            alt="">
+                        <!-- <img id="back" src="../back.png" alt=""> -->
+                        <!-- https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQInnBAdcFDOXoJmFzfqRW28DqGOuDUEAV1HOTHcU6x3gvwQHG-GoYCpDV8Ifh-sLZNV4&usqp=CAU -->
+
+
+
+                    </div>
+                    <div class="info">
+
+                        <div class="cityname">
+                            <h3 id="show"></h3>
+                        </div>
+                        <div class="weather-info">
+                            <div class="humid">
+                                <h3>humidity</h3>
+                                <i class="ri-water-percent-line"></i>
+                                <h4 id="humidity"></h4>
+
+                            </div>
+                            <div class="prec">
+                                <h3>precipitation</h3>
+                                <i class="fas fa-cloud-rain"></i>
+                                <h4 id="prec"></h4>
+
+                            </div>
+                            <div class="wind">
+                                <h3>windspeed</h3>
+                                <i class="fas fa-wind"></i>
+                                <h4 id="wind"></h4>
+                            </div>
+                        </div>
+                        <div class="input">
+                            <input type="text" id="name">
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Your script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".overlay button").click(function () {
+                $(".overlay").slideUp(2000);
+            })
+        });
+        $("#searchbtn").click(function(){
+            $(".input input").css("right","60px")
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        setInterval(function () { showdate(); }, 1000);
+        function showdate() {
+
+            var date = new Date();
+            var h = date.getHours();
+            t = date.getDay();
+
+
+            var m = date.getMinutes();
+            var ampm = h >= 12 ? 'PM' : 'AM';
+            var amp = h >= 12 ? 'good afternoon ' : 'good morning ';
+            document.querySelector(".image h5").innerHTML = amp;
+            // if (h >= 12 && h<=16) {
+
+
+
+
+            //     document.querySelector(".image h5").innerHTML = "good afternoon";
+            // }
+            // else if(h<=17  &&  h>=20){
+            //     document.querySelector(".image h5").innerHTML = "Good Evening";
+            // }
+            // else if (h > 20 && h >24 ) {
+            //     document.querySelector(".image h5").innerHTML = "good night";
+
+            // }
+            // else if(h>=24){
+            //     document.querySelector(".image h5").innerHTML = "good morning";
+
+            // }
+            h = h % 12;
+            h = h ? h : 12
+            a = document.querySelector(".image h3").innerHTML = h + ":" + m + " " + ampm;
+            if (h >= 12) {
+                document.getElementById("cont").style.backgroundImage ="url('https://img.freepik.com/free-vector/hand-painted-watercolor-pastel-sky-background_52683-60691.jpg?size=626&ext=jpg&ga=GA1.1.1229317445.1702907597&semt=ais')";
+                
+            } else {
+                document.getElementById("cont").style.backgroundImage ="url('https://wallpapers.com/images/hd/night-sky-wallpaper-ztbbfcndgwabmt7h.jpg')";
+            }
+
+            let daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            let currentDate = new Date();
+
+            let currentDay = daysOfWeek[currentDate.getDay()];
+
+
+
+
+
+
+
+            document.querySelector(".image h4").innerHTML = currentDay;
+
+
+        }
+
+        window.onload = function () {
+            document.querySelector(".image h5").style.left = "0px";
+            setInterval(function () { showdate(); }, 1000);
+
+
+
+        }
+        function showname() {
+            var a = document.querySelector(".input input").value;
+            document.getElementById("showmename").innerHTML = a;
+        }
+
+
+
+
+
+
+
+
+
+        function showData() {
+            var a = document.getElementById("name").value;
+            document.getElementById("show").style.display = "block";
+
+
+
+
+            const settings = {
+                async: true,
+                crossDomain: true,
+                url: 'https://weatherapi-com.p.rapidapi.com/current.json?q=' + a + '',
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': 'b55a0c332dmsh5b4f1c6497258cbp10e9e0jsnd31c6c2f70d7',
+                    'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
+                }
+            };
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+                data = response;
+                var a = data.current.temp_c;
+                // var b = data.location.country;
+                // var c = data.location.region;
+                // var d = data.location.localtime;
+                // var e = data.current.condition.text;
+                // var f = data.current.humidity;
+                // var g = data.current.wind_mph;
+                // var h = data.current.feelslike_c;
+                // var i = data.current.pressure_mb;
+                // var j = data.current.precip_mm;
+                document.getElementById("showme").innerHTML = data.current.temp_c + "&deg;";
+                document.getElementById("show").innerHTML = data.location.name;
+                document.getElementById("humidity").innerHTML = data.current.humidity;
+                document.getElementById("wind").innerHTML = data.current.wind_kph;
+                document.getElementById("prec").innerHTML = data.current.precip_mm;
+
+                if (a <= 20 && a >= 8) {
+                    document.querySelector(".image p").innerHTML = "cold";
+                    document.querySelector(".image img").setAttribute("src", "cold.jpg.png");
+                    document.getElementById("showmename").style.color = "white";
+                    document.getElementById("showme").style.color = "white";
+                    document.querySelector(".image p ").style.color = "white";
+                    document.querySelector(".image h3 ").style.color = "white";
+                    document.querySelector(".image h4 ").style.color = "white";
+
+
+                }
+                else if (a <= 2) {
+                    document.querySelector(".image p").innerHTML = "freezing";
+                    document.querySelector(".image img").setAttribute("src", "cold weather image.jpg");
+                    document.getElementById("showmename").style.color = "white";
+                    document.getElementById("showme").style.color = "white";
+
+
+                }
+                else {
+                    document.querySelector(".image p").innerHTML = "sunny";
+                    document.querySelector(".image img").setAttribute("src", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQInnBAdcFDOXoJmFzfqRW28DqGOuDUEAV1HOTHcU6x3gvwQHG-GoYCpDV8Ifh-sLZNV4&usqp=CAU");
+                }
+            }
+
+
+
+
+            )
+        }
+    </script>
+</body>
+
+</html>
